@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiProject.Views.ListViewPage"
+             x:Class="MauiProject.Views.DeleteImagePage"
              xmlns:vm="clr-namespace:MauiProject.ViewModels"
              xmlns:model="clr-namespace:MauiProject.Models"
              x:DataType="vm:ListViewModel"
              Title="">
-
-    <CollectionView Footer="Images from https://www.pexels.com/" SelectionMode="None" Margin="10" ItemsSource="{Binding Images.Collection}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always">
+    <CollectionView SelectedItem="{Binding SelectedImage}" SelectionMode="Single" Margin="10" ItemsSource="{Binding Images.Collection}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always">
         <CollectionView.Header>
             <HorizontalStackLayout Margin="10">
                 <Button
@@ -16,16 +15,25 @@
                     Margin="10"
                     HorizontalOptions="Fill" />
                 <Label 
-                    Text="Image Gallery"
+                    Text="Delete Image"
                     FontSize="Header"
                     FontAttributes="Bold"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
+
             </HorizontalStackLayout>
         </CollectionView.Header>
+        <CollectionView.Footer>
+            <Button
+                    Text="Delete" 
+                    Command="{Binding DeleteBtnCommand}"
+                    Margin="10"
+                    WidthRequest="200"
+                    HorizontalOptions="Center" />
+        </CollectionView.Footer>
         <CollectionView.ItemsLayout>
             <GridItemsLayout Orientation="Vertical"
-                                 Span="2" />
+                                 Span="4" />
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:ImageView">
@@ -34,8 +42,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="{Binding Path}" Aspect="AspectFit" HeightRequest="500" />
-                    <Label Grid.Row="1" Text="{Binding Title}" FontSize="Medium" FontAttributes="Bold" />
+                    <Image Grid.Row="0" Source="{Binding Path}" Aspect="AspectFit" HeightRequest="100" />
+                    <Label Grid.Row="1" Text="{Binding Title}" FontSize="Small" FontAttributes="Bold" />
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

@@ -12,8 +12,16 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent
+        Title="ListView"
+        ContentTemplate="{DataTemplate local:ListViewPage}"
+        Route="ListView" />
+    <ShellContent
+        Title="ListView"
+        ContentTemplate="{DataTemplate local:AddImagePage}"
+        Route="AddImage" />
+    <ShellContent
     Title="ListView"
-    ContentTemplate="{DataTemplate local:ListViewPage}"
-    Route="ListView" />
+    ContentTemplate="{DataTemplate local:DeleteImagePage}"
+    Route="DeleteImage" />
 
 </Shell>

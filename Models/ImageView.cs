@@ -10,5 +10,20 @@ namespace MauiProject.Models
     {
         public string Title { get; set; }
         public string Path { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is ImageView other)
+            {
+                return Title == other.Title && Path == other.Path;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Title, Path);
+        }
     }
+
 }
